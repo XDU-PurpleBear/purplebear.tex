@@ -108,8 +108,53 @@
   }
   \hspace{0.05\paperwidth}
   \vspace{0.1\paperheight}
+  \restoregeometry
   \newpage
   \pagecolor{white}
+}
+
+%% make title
+\renewcommand\maketitle{%
+  \begin{titlepage}
+    \pdfbookmark[1]{扉页}{page:title}
+    % 扉页
+    \label{page:title}
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \let\footnote\thanks
+    \null\vfil
+    \vskip 60\p@
+    \begin{center}%
+      {\Huge Dingo \@title \par}%
+      \vskip 3em%
+      {\large
+        \lineskip .75em%
+        \begin{tabular}[t]{c}%
+          \@author
+        \end{tabular}\par}%
+      \vskip 1.5em%
+      {\large \@date \par}%       % Set date in \large size.
+    \end{center}\par
+    \@thanks
+    \vfil\null\setcounter{footnote}{0}%
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
+    \thispagestyle{empty}
+    \vfill
+    \begin{center}
+      Version \the\version\\
+      \the\city \\
+      Purple Bear Team
+    \end{center}
+  \end{titlepage}
 }
 
 
