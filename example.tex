@@ -1,0 +1,27 @@
+\documentclass{article}
+
+\usepackage{purplebear}
+
+
+% http://colorhunt.co
+% toRGBF x =
+%    let r = x `div` 0x10000
+%        g = (x `mod` 0x10000) `div` 0x100
+%        b = x `mod` 0x100
+%    in printf "{RGB}{%d,%d,%d}\n" r g b
+
+
+\definecolor{c1}{RGB}{223,244,243}
+\definecolor{c2}{RGB}{221,231,242}
+\definecolor{c3}{RGB}{185,187,223}
+\definecolor{c4}{RGB}{135,142,205}
+
+\CoverBGColor{c1}
+\CoverFontColor{c4}
+\CoverFontBGColor{c2}
+\title{Document Example}
+
+\begin{document}
+\makecover
+\maketitle
+\end{document}

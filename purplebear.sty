@@ -1,0 +1,117 @@
+\ProvidesPackage{purplebear}[2017/09/28, Johann Lee<me@qinka.pro>m Ver.0.1.0]
+\NeedsTeXFormat{LaTeX2e}
+
+% Setting tokens
+%% For cover background color
+\newtoks\CoverBGColor
+%% For color font's bg
+\newtoks\CoverFontBGColor
+%% For cover font color
+\newtoks\CoverFontColor
+%% For cover image
+\newtoks\CoverImage
+%% For docuement version
+\newtoks\version
+%% For city
+\newtoks\city
+
+
+
+% Setting up xeCJK
+\RequirePackage{xeCJK}
+\setCJKmainfont{Adobe Song Std}
+
+% color
+\RequirePackage{color}
+\RequirePackage{xcolor}
+
+% hyperref
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=red,bookmarksnumbered,%
+  pdftitle=Purple Bear Team}
+
+% appendix
+\RequirePackage[titletoc]{appendix}
+\appendixtitletocon
+
+% figure
+\RequirePackage{wrapfig}
+\RequirePackage{graphicx}
+
+% caption
+\RequirePackage{caption}
+
+% geometry
+\RequirePackage{geometry}
+
+% page color
+\RequirePackage{afterpage}
+\RequirePackage{pagecolor}
+
+
+%%% 时间
+\RequirePackage{datetime}
+\newdateformat{mydate}{\monthname[\THEMONTH],\THEYEAR}%
+\newdateformat{mdydate}{\monthname[\THEMONTH] \ordinaldate{\THEDAY} \THEYEAR}%
+
+% new commands
+
+%% create cover
+\newcommand\makecover{%
+  % 
+  % pdf book mark
+  \pdfbookmark[0]{Purple Bear \@title}{}
+  \pdfbookmark[1]{cover}{page:cover}
+  \label{page:cover}
+  % 
+  % reset page
+  \newgeometry{left=0em,right=0em,top=0em,bottom=0em}
+  \pagecolor{\the\CoverBGColor}\afterpage{\restorepagecolor}
+  %% Title
+  \vspace*{0.12\paperheight}\hfill
+  \hbox{%
+    \colorbox{\the\CoverFontBGColor}{%
+      \vbox{\vspace{0.01\paperheight}
+        \hbox to0.8\paperwidth{%
+          \hfil {%
+            \color{\the\CoverFontColor}
+            \fontsize{90pt}{99pt}
+            \selectfont
+            Purple Bear%
+            \hspace*{0.05\paperwidth}}
+          \protect\vspace{0.6truemm}\relax}
+        \vspace{0.01\paperheight}
+        \hbox to0.81\paperwidth{%
+          \hfil {%
+            \color{\the\CoverFontColor}
+            \fontsize{50pt}{59pt}
+            \selectfont
+            \@title%
+            \hspace*{0.05\paperwidth}}
+          \protect\vspace{0.6truemm}\relax}
+      }
+    }\hspace{-0.01\paperwidth}}
+  \vfill
+  \hfill
+  \colorbox{\the\CoverFontBGColor}{%
+    \vbox{
+      \color{\the\CoverFontColor}
+      \fontsize{20pt}{29pt}
+      \selectfont
+      \hbox to0.3\paperwidth{\hfil {Purple Bear Team}
+        \protect\vspace{0.6truemm}\relax}
+      \hbox to0.3\paperwidth{\hfil {Group 3/B}
+        \protect\vspace{0.6truemm}\relax}
+      \hbox to0.3\paperwidth{\hfil {\mydate\today}
+        \protect\vspace{0.6truemm}\relax}
+    }
+  }
+  \hspace{0.05\paperwidth}
+  \vspace{0.1\paperheight}
+  \newpage
+  \pagecolor{white}
+}
+
+
+% end of package
+\endinput
